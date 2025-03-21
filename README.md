@@ -52,6 +52,11 @@ O projeto fornecido contém um sistema de **cadastro de usuários**. Você dever
   - "Confirmação da senha é obrigatória" se o campo de confirmação estiver vazio.
   - "As senhas não coincidem" se as senhas forem diferentes.
 
+#### 5️⃣ Testes de validação de rotas
+
+- Garantir que um usuário **não autenticado** não pode acessar a página inicial `/` e seja redirecionado para a página de login.
+- Garantir que um usuário **autenticado** ao tentar acessar `/login` ou `/signup` seja redirecionado para a página inicial `/`.
+
 ---
 
 ## 🎯 O que será avaliado?
