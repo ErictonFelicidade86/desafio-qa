@@ -72,10 +72,11 @@ O projeto fornecido contém um sistema de **cadastro de usuários**. Você dever
 
 ## 🚀 Entrega
 
-1. **Clone o repositório fornecido** e crie uma **nova branch** para sua implementação.
-2. Implemente os testes conforme os requisitos acima.
-3. Inclua um arquivo **`README.md`** com instruções para rodar o projeto.
-4. Submeta um **pull request (PR)** para revisão.
+1. Faça um fork desse repositório e clone na sua máquina local.
+2. Crie uma **nova branch** para sua implementação.
+3. Implemente os testes conforme os requisitos acima.
+4. Atualize o arquivo **`README.md`** com instruções para rodar o projeto.
+5. Submeta um **pull request (PR)** para revisão.
 
 ---
 
