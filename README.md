@@ -96,8 +96,8 @@ Boa sorte! 🚀
 1. **Clone o repositório**
 
 ```bash
-   git clone https://github.com/Jefferson00/teste-qa.git
-   cd teste-qa
+   git clone https://github.com/Jefferson00/desafio-qa.git
+   cd desafio-qa
 ```
 
 2. Instale as dependências
