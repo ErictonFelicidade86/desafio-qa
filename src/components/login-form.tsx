@@ -49,7 +49,7 @@ export function LoginForm({ className, ...props }: React.ComponentPropsWithoutRe
     }
     setLoading(false)
 
-    toast('Credenciais invalidas', {
+    toast('Credenciais inválidas', {
       description: 'Tente novamente',
       position: 'top-center'
     }) 

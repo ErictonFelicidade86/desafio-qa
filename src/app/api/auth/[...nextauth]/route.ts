@@ -24,7 +24,7 @@ export const authOptions = {
           !user ||
           !(await bcrypt.compare(credentials.password, user.password))
         ) {
-          throw new Error("Email ou senha invalida");
+          throw new Error("Email ou senha inválida");
         }
         return user;
       },
