@@ -12,7 +12,7 @@ Você deverá testar uma aplicação web simples, cobrindo diferentes cenários 
 
 - Utilizar **Cypress** para a automação de testes.
 - Seguir boas práticas de automação, como **Page Object Model (POM)**.
-- Criar um **pipeline de CI/CD** simples para rodar os testes automaticamente a cada pull request para a branch **main**.
+- Criar um **pipeline de CI/CD** simples para rodar os testes automaticamente a cada pull request para a branch **develop**.
 - Crie uma nova branch para sua implementação.
 - Documentar o processo e os testes criados em um **README.md**.
 
