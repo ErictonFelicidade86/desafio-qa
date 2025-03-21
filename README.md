@@ -1,36 +1,125 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Desafio Técnico – QA Pleno
 
-## Getting Started
+## 📌 Descrição
 
-First, run the development server:
+Este desafio tem como objetivo avaliar sua capacidade de criar, manter e executar testes automatizados utilizando **Cypress**. Além disso, queremos entender como você analisa cenários de testes e aplica boas práticas de automação.
+
+Você deverá testar uma aplicação web simples, cobrindo diferentes cenários de teste, incluindo testes funcionais, de regressão e de interface.
+
+---
+
+## ✅ Requisitos
+
+- Utilizar **Cypress** para a automação de testes.
+- Seguir boas práticas de automação, como **Page Object Model (POM)**.
+- Criar um **pipeline de CI/CD** simples para rodar os testes automaticamente a cada pull request para a branch **main**.
+- Crie uma nova branch para sua implementação.
+- Documentar o processo e os testes criados em um **README.md**.
+
+---
+
+## 🖥️ Cenário a ser testado
+
+O projeto fornecido contém um sistema de **cadastro de usuários**. Você deverá implementar testes para validar suas funcionalidades principais.
+
+### 🔍 Funcionalidades a serem testadas
+
+#### 1️⃣ Cadastro de novo usuário
+
+- Validar que um usuário pode ser cadastrado com sucesso preenchendo todos os campos corretamente.
+- Garantir que a senha segue os critérios exigidos.
+- Testar mensagens de erro ao tentar cadastrar um usuário com **e-mail já existente**.
+
+#### 2️⃣ Login no sistema
+
+- Validar **login bem-sucedido** com credenciais corretas.
+- Testar erro ao tentar logar com **senha incorreta**.
+
+#### 3️⃣ Validação de interface
+
+- Garantir que os **campos obrigatórios** estão visíveis e marcados corretamente.
+- Testar a **responsividade da tela** em diferentes tamanhos de viewport.
+
+#### 4️⃣ Testes negativos
+
+- Tentar cadastrar um usuário **sem preencher campos obrigatórios** e validar as mensagens de erro:
+  - "Nome é obrigatório" se o campo de nome estiver vazio.
+  - "Email é obrigatório" se o campo de email estiver vazio.
+  - "Email inválido" se o formato do email for inválido.
+  - "Senha é obrigatória" se o campo de senha estiver vazio.
+  - "A senha deve ter no mínimo 8 caracteres" se a senha for curta.
+  - "A senha deve conter pelo menos uma letra e um número" se a senha não atender aos critérios.
+  - "Confirmação da senha é obrigatória" se o campo de confirmação estiver vazio.
+  - "As senhas não coincidem" se as senhas forem diferentes.
+
+---
+
+## 🎯 O que será avaliado?
+
+✔️ Organização e estrutura do código.
+✔️ Qualidade dos testes automatizados.
+✔️ Uso de boas práticas de Cypress (**Page Object Model, boas estratégias de seleção de elementos, etc.**).
+✔️ Clareza na documentação do projeto.
+✔️ Implementação de um **pipeline de CI/CD** (GitHub Actions).
+✔️ Uso adequado do controle de versão (**commits bem estruturados e mensagens claras**).
+
+---
+
+## 🚀 Entrega
+
+1. **Clone o repositório fornecido** e crie uma **nova branch** para sua implementação.
+2. Implemente os testes conforme os requisitos acima.
+3. Inclua um arquivo **`README.md`** com instruções para rodar o projeto.
+4. Submeta um **pull request (PR)** para revisão.
+
+---
+
+## ⭐ Diferenciais (Não Obrigatório)
+
+🌟 Testes rodando **em paralelo**.
+🌟 Relatórios automatizados com **screenshots e vídeos das execuções**.
+🌟 Integração com ferramentas de report como **TestRail** ou **Allure**.
+
+---
+
+💡 **Dúvidas?** Fique à vontade para entrar em contato.
+
+Boa sorte! 🚀
+
+## Executando o projeto
+
+1. **Clone o repositório**
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+   git clone https://github.com/Jefferson00/teste-qa.git
+   cd teste-qa
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Instale as dependências
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+    npm install
+    # ou
+    yarn install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. Crie um arquivo **.env** seguindo o padrão do **.env.example**
+4. Execute as migrations do Prisma
 
-## Learn More
+```bash
+    npx prisma migrate dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+5. Inicie o servidor de desenvolvimento
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+    npm run dev
+    # ou
+    yarn dev
+    # ou
+    pnpm dev
+    # ou
+    bun dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+O projeto estará disponível em [http://localhost:3010](http://localhost:3010).
