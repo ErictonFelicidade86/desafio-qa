@@ -28,7 +28,7 @@ jobs:
         run: npx prisma migrate dev
 
       - name: Iniciar servidor em segundo plano
-        run: yarn dev
+        run: yarn dev &
 
       - name: Aguardar servidor responder
         run: npx wait-on http://localhost:3010
