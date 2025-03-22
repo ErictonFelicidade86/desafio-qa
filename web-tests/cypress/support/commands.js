@@ -1,7 +1,6 @@
 /// <reference types="cypress"/>
 // ***********************************************
 
-
 Cypress.Commands.add('acesso', ()=> {
     cy.viewport(1600, 800)
     cy.visit('http://localhost:3010/login')
@@ -26,5 +25,35 @@ Cypress.Commands.add('logout', () => {
     cy.contains('span', 'E').should('be.visible').click()
     cy.contains('span', 'Sair').should('be.visible').click()
     cy.contains('div', 'Entrar').should('be.visible')
+})
+//Login With Credentials
+Cypress.Commands.add('loginWithCredentials', (email, password) => {
+    cy.get('#email').should('be.visible').type(email)
+    cy.get('#password').should('be.visible').type(password)
+    cy.contains('button', 'Entrar').should('be.visible').click()
+})
+// Validate Invalid Credentials Message
+Cypress.Commands.add('validateInvalidCredentialsMessage', () => {
+    cy.contains('div', 'Credenciais inválidas')
+      .should('be.visible')
+      .and('have.text', 'Credenciais inválidas')
+    cy.contains('div', 'Tente novamente')
+      .should('be.visible')
+      .and('have.text', 'Tente novamente')
+})
+// Validate Invalid Email Message
+Cypress.Commands.add('validateInvalidEmailMessage', () => {
+    cy.contains('p', 'Email inválido')
+      .should('be.visible')
+      .and('have.text', 'Email inválido')
+})
+// Validate Empty Fields Message  
+Cypress.Commands.add('validateEmptyFieldsMessage', () => {
+    cy.contains('p', 'Email é obrigatório')
+      .should('be.visible')
+      .and('have.text', 'Email é obrigatório')
+    cy.contains('p', 'Senha é obrigatória')
+      .should('be.visible')
+      .and('have.text', 'Senha é obrigatória')
 })
   

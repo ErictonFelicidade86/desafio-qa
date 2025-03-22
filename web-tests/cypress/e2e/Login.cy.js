@@ -6,11 +6,11 @@ describe('Login', () => {
   beforeEach(() => {
     login.go()
   })
-  it.only('Deve logar com sucesso', () => {
+  it('Deve logar com sucesso', () => {
     login.sucesso()
   })
 
-  it.only('Deve encerrar a sessão com sucesso', () => {
+  it('Deve encerrar a sessão com sucesso', () => {
     login.sucesso()
     login.logout()
   })
