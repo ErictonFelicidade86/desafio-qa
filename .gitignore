@@ -2,6 +2,7 @@
 
 # dependencies
 web-tests/node_modules
+web-tests/downloads
 /node_modules
 /.pnp
 .pnp.*

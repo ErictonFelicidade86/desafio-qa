@@ -56,4 +56,25 @@ Cypress.Commands.add('validateEmptyFieldsMessage', () => {
       .should('be.visible')
       .and('have.text', 'Senha é obrigatória')
 })
-  
+
+// REGISTER USER
+
+// Fill Signup Form
+Cypress.Commands.add('fillSignupForm', ({ name, email, password, confirmPassword }) => {
+  if (name) cy.get('#name').should('be.visible').type(name)
+  if (email) cy.get('#email').should('be.visible').type(email)
+  if (password) cy.get('#password').should('be.visible').type(password)
+  if (confirmPassword) cy.get('#confirmPassword').should('be.visible').type(confirmPassword)
+})
+// Button Submit Signup
+Cypress.Commands.add('submitSignup', () => {
+  cy.contains('button', 'Cadastrar').should('be.visible').click()
+})
+// Validate Signup Error
+Cypress.Commands.add('validateSignupError', (selector, expectedText) => {
+  cy.get(selector).should('be.visible').and('have.text', expectedText)
+})
+// Validate Text Error
+Cypress.Commands.add('validateTextError', (tag, expectedText) => {
+  cy.contains(tag, expectedText).should('be.visible').and('have.text', expectedText)
+})

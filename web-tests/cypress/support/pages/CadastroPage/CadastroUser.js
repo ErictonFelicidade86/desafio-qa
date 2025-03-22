@@ -28,143 +28,109 @@ class User {
 
     // Existing User
     existingUser() {
-        cy.get('#name').should('be.visible').type(data.userValid.name)
-        cy.get('#email').should('be.visible').type(data.userValid.email)
-        cy.get('#password').should('be.visible').type(data.userValid.password)
-        cy.get('#confirmPassword').should('be.visible').type(data.userValid.confirmPassword)
-        cy.contains('button', 'Cadastrar').should('be.visible').click()
-        cy.contains('div', 'Usuário já cadastrado').should('be.visible').and('have.text', 'Usuário já cadastrado')
+        cy.fillSignupForm(data.userValid)
+        cy.submitSignup()
+        cy.validateTextError('div', 'Usuário já cadastrado')
     }
 
     // Required Fields
     requiredFields() {
-        cy.contains('button', 'Cadastrar').should('be.visible').click()
-        cy.contains('p', 'Nome é obrigatório').should('be.visible').and('have.text', 'Nome é obrigatório')
-        cy.contains('p', 'Email é obrigatório').should('be.visible').and('have.text', 'Email é obrigatório')
-        cy.contains('p', 'A senha deve ter no mínimo 8 caracteres').should('be.visible').and('have.text', 'A senha deve ter no mínimo 8 caracteres')
-        cy.get('#«Rhhtml7»-form-item-message').should('be.visible').and('have.text', 'A senha deve ter no mínimo 8 caracteres')
+        cy.submitSignup()
+        cy.validateTextError('p', 'Nome é obrigatório')
+        cy.validateTextError('p', 'Email é obrigatório')
+        cy.validateTextError('p', 'A senha deve ter no mínimo 8 caracteres')
+        cy.validateSignupError('#«Rhhtml7»-form-item-message', 'A senha deve ter no mínimo 8 caracteres')
     }
 
     // Empty Name
     emptyName() {
-        cy.get('#email').should('be.visible').type(data.userValid.email)
-        cy.get('#password').should('be.visible').type(data.userValid.password)
-        cy.get('#confirmPassword').should('be.visible').type(data.userValid.confirmPassword)
-        cy.contains('button', 'Cadastrar').should('be.visible').click()
-        cy.contains('p', 'Nome é obrigatório').should('be.visible').and('have.text', 'Nome é obrigatório')
+        const { email, password, confirmPassword } = data.userValid
+        cy.fillSignupForm({ email, password, confirmPassword })
+        cy.submitSignup()
+        cy.validateTextError('p', 'Nome é obrigatório')
     }
 
     // Empty Email
     emptyEmail() {
-        cy.get('#name').should('be.visible').type(data.userValid.name)
-        cy.get('#password').should('be.visible').type(data.userValid.password)
-        cy.get('#confirmPassword').should('be.visible').type(data.userValid.confirmPassword)
-        cy.contains('button', 'Cadastrar').should('be.visible').click()
-        cy.contains('p', 'Email é obrigatório').should('be.visible').and('have.text', 'Email é obrigatório')
+        const { name, password, confirmPassword } = data.userValid
+        cy.fillSignupForm({ name, password, confirmPassword })
+        cy.submitSignup()
+        cy.validateTextError('p', 'Email é obrigatório')
     }
 
     // Empty Password
     emptyPassword() {
-        cy.get('#name').should('be.visible').type(data.userValid.name)
-        cy.get('#email').should('be.visible').type(data.userValid.email)
-        cy.get('#confirmPassword').should('be.visible').type(data.userValid.confirmPassword)
-        cy.contains('button', 'Cadastrar').should('be.visible').click()
-        cy.contains('p', 'A senha deve ter no mínimo 8 caracteres').should('be.visible').and('have.text', 'A senha deve ter no mínimo 8 caracteres')
-        cy.get('#«Rhhtml7»-form-item-message').should('be.visible').should('be.visible').and('have.text', 'As senhas não coincidem')
+        const { name, email, confirmPassword } = data.userValid
+        cy.fillSignupForm({ name, email, confirmPassword })
+        cy.submitSignup()
+        cy.validateTextError('p', 'A senha deve ter no mínimo 8 caracteres')
+        cy.validateSignupError('#«Rhhtml7»-form-item-message', 'As senhas não coincidem')
     }
 
     // Empty Confirm Password
     emptyConfirmPassword() {
-        cy.get('#name').should('be.visible').type(data.userValid.name)
-        cy.get('#email').should('be.visible').type(data.userValid.email)
-        cy.get('#password').should('be.visible').type(data.userValid.password)
-        cy.contains('button', 'Cadastrar').should('be.visible').click()
-        cy.get('#«Rhhtml7»-form-item-message').should('be.visible').should('be.visible').and('have.text', 'A senha deve ter no mínimo 8 caracteres')
+        const { name, email, password } = data.userValid
+        cy.fillSignupForm({ name, email, password })
+        cy.submitSignup()
+        cy.validateSignupError('#«Rhhtml7»-form-item-message', 'A senha deve ter no mínimo 8 caracteres')
     }
 
     // Invalid Name
     nameInvalid() {
-        cy.get('#name').should('be.visible').type(data.nameInvalid.name)
-        cy.get('#email').should('be.visible').type(data.nameInvalid.email)
-        cy.get('#password').should('be.visible').type(data.nameInvalid.password)
-        cy.get('#confirmPassword').should('be.visible').type(data.nameInvalid.confirmPassword)
-        cy.contains('button', 'Cadastrar').should('be.visible').click()
-        cy.contains('p', 'Nome pode ter no máximo 50 caracteres').should('be.visible').and('have.text', 'Nome pode ter no máximo 50 caracteres')
+        cy.fillSignupForm(data.nameInvalid)
+        cy.submitSignup()
+        cy.validateTextError('p', 'Nome pode ter no máximo 50 caracteres')
     }
 
     // Invalid Email 
     emailInvalid() {
-        cy.get('#name').should('be.visible').type(data.emailInvalid.name)
-        cy.get('#email').should('be.visible').type(data.emailInvalid.email)
-        cy.get('#password').should('be.visible').type(data.emailInvalid.password)
-        cy.get('#confirmPassword').should('be.visible').type(data.emailInvalid.confirmPassword)
-        cy.contains('button', 'Cadastrar').should('be.visible').click()
-        cy.contains('p', 'Email inválido').should('be.visible').and('have.text', 'Email inválido')
+        cy.fillSignupForm(data.emailInvalid)
+        cy.submitSignup()
+        cy.validateTextError('p', 'Email inválido')
     }
     // Invalid Password 
     passwordInvalid() {
-        cy.get('#name').should('be.visible').type(data.passwordInvalid.name)
-        cy.get('#email').should('be.visible').type(data.passwordInvalid.email)
-        cy.get('#password').should('be.visible').type(data.passwordInvalid.password)
-        cy.get('#confirmPassword').should('be.visible').type(data.passwordInvalid.confirmPassword)
-        cy.contains('button', 'Cadastrar').should('be.visible').click()
-        cy.contains('p', 'A senha deve conter pelo menos uma letra e um número').should('be.visible').and('have.text', 'A senha deve conter pelo menos uma letra e um número')
+        cy.fillSignupForm(data.passwordInvalid)
+        cy.submitSignup()
+        cy.validateTextError('p', 'A senha deve conter pelo menos uma letra e um número')
     }
     // Short Password
     shortPassword() {
-        cy.get('#name').should('be.visible').type(data.shortPassword.name)
-        cy.get('#email').should('be.visible').type(data.shortPassword.email)
-        cy.get('#password').should('be.visible').type(data.shortPassword.password)
-        cy.get('#confirmPassword').should('be.visible').type(data.shortPassword.confirmPassword)
-        cy.contains('button', 'Cadastrar').should('be.visible').click()
-        cy.contains('p', 'A senha deve ter no mínimo 8 caracteres').should('be.visible').and('have.text', 'A senha deve ter no mínimo 8 caracteres')
-        cy.get('#«Rhhtml7»-form-item-message').should('be.visible').and('have.text', 'A senha deve ter no mínimo 8 caracteres')
+        cy.fillSignupForm(data.shortPassword)
+        cy.submitSignup()
+        cy.validateTextError('p', 'A senha deve ter no mínimo 8 caracteres')
+        cy.validateSignupError('#«Rhhtml7»-form-item-message', 'A senha deve ter no mínimo 8 caracteres')
     }
     // Non Standard Password
     nonStandardPassword() {
-        cy.get('#name').should('be.visible').type(data.nonStandardPassword.name)
-        cy.get('#email').should('be.visible').type(data.nonStandardPassword.email)
-        cy.get('#password').should('be.visible').type(data.nonStandardPassword.password)
-        cy.get('#confirmPassword').should('be.visible').type(data.nonStandardPassword.confirmPassword)
-        cy.contains('button', 'Cadastrar').should('be.visible').click()
-        cy.contains('p', 'A senha deve conter pelo menos uma letra e um número').should('be.visible').and('have.text', 'A senha deve conter pelo menos uma letra e um número')
+        cy.fillSignupForm(data.nonStandardPassword)
+        cy.submitSignup()
+        cy.validateTextError('p', 'A senha deve conter pelo menos uma letra e um número')
 
     }
     // Password Without Letters
     passwordWithoutLetters() {
-        cy.get('#name').should('be.visible').type(data.passwordWithoutLetters.name)
-        cy.get('#email').should('be.visible').type(data.passwordWithoutLetters.email)
-        cy.get('#password').should('be.visible').type(data.passwordWithoutLetters.password)
-        cy.get('#confirmPassword').should('be.visible').type(data.passwordWithoutLetters.confirmPassword)
-        cy.contains('button', 'Cadastrar').should('be.visible').click()
-        cy.contains('p', 'A senha deve conter pelo menos uma letra e um número').should('be.visible').and('have.text', 'A senha deve conter pelo menos uma letra e um número')
+        cy.fillSignupForm(data.passwordWithoutLetters)
+        cy.submitSignup()
+        cy.validateTextError('p', 'A senha deve conter pelo menos uma letra e um número')
     }
     // Password Without Numbers
     passwordWithoutNumbers() {
-        cy.get('#name').should('be.visible').type(data.passwordWithoutNumbers.name)
-        cy.get('#email').should('be.visible').type(data.passwordWithoutNumbers.email)
-        cy.get('#password').should('be.visible').type(data.passwordWithoutNumbers.password)
-        cy.get('#confirmPassword').should('be.visible').type(data.passwordWithoutNumbers.confirmPassword)
-        cy.contains('button', 'Cadastrar').should('be.visible').click()
-        cy.contains('p', 'A senha deve conter pelo menos uma letra e um número').should('be.visible').and('have.text', 'A senha deve conter pelo menos uma letra e um número')
+        cy.fillSignupForm(data.passwordWithoutNumbers)
+        cy.submitSignup()
+        cy.validateTextError('p', 'A senha deve conter pelo menos uma letra e um número')
     }
     // Password Different
     passwordDifferent() {
-        cy.get('#name').should('be.visible').type(data.passwordDifferent.name)
-        cy.get('#email').should('be.visible').type(data.passwordDifferent.email)
-        cy.get('#password').should('be.visible').type(data.passwordDifferent.password)
-        cy.get('#confirmPassword').should('be.visible').type(data.passwordDifferent.confirmPassword)
-        cy.contains('button', 'Cadastrar').should('be.visible').click()
-        cy.get('#«Rhhtml7»-form-item-message').should('be.visible').should('be.visible').and('have.text', 'As senhas não coincidem')
+        cy.fillSignupForm(data.passwordDifferent)
+        cy.submitSignup()
+        cy.validateSignupError('#«Rhhtml7»-form-item-message', 'As senhas não coincidem')
     }
     // Password Confirm Different
     passwordConfirmDifferent() {
-        cy.get('#name').should('be.visible').type(data.passwordConfirmDifferent.name)
-        cy.get('#email').should('be.visible').type(data.passwordConfirmDifferent.email)
-        cy.get('#password').should('be.visible').type(data.passwordConfirmDifferent.password)
-        cy.get('#confirmPassword').should('be.visible').type(data.passwordConfirmDifferent.confirmPassword)
-        cy.contains('button', 'Cadastrar').should('be.visible').click()
-        cy.get('#«Rhhtml7»-form-item-message').should('be.visible').should('be.visible').and('have.text', 'As senhas não coincidem')
+        cy.fillSignupForm(data.passwordConfirmDifferent)
+        cy.submitSignup()
+        cy.validateSignupError('#«Rhhtml7»-form-item-message', 'As senhas não coincidem')
     }
 
 } export default new User()
