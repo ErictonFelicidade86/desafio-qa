@@ -1,0 +1,62 @@
+{
+  "userValid": {
+    "name": "Ericton",
+    "email": "erictonbrito@yahoo.com.br",
+    "password": "ericton86",
+    "confirmPassword": "ericton86"
+  },
+  "nameInvalid": {
+    "name": "ErictonErictonErictonErictonErictonErictonErictonErictonErictonErictonErictonErictonEricton",
+    "email": "testeName@teste.com.br",
+    "password": "ericton86",
+    "confirmPassword": "ericton86"
+  },
+  "emailInvalid": {
+    "name": "Ericton",
+    "email": "usuario@teste",
+    "password": "ericton86",
+    "confirmPassword": "ericton86"
+  },
+  "passwordInvalid": {
+    "name": "Ericton",
+    "email": "erictonbrito@yahoo.com.br",
+    "password": "-*+/**//+*/+*",
+    "confirmPassword": "-*+/**//+*/+*"
+  },
+  "shortPassword": {
+    "name": "Ericton",
+    "email": "usuarioteste@yahoo.com.br",
+    "password": "ton12",
+    "confirmPassword": "ton12"
+  },
+  "nonStandardPassword": {
+    "name": "Ericton",
+    "email": "testenovo@yahoo.com.br",
+    "password": "ericton86#",
+    "confirmPassword": "ericton86#"
+  },
+  "passwordWithoutLetters": {
+    "name": "Ericton",
+    "email": "testenovo@yahoo.com.br",
+    "password": "12345678",
+    "confirmPassword": "12345678"
+  },
+  "passwordWithoutNumbers": {
+    "name": "Ericton",
+    "email": "testenovo@yahoo.com.br",
+    "password": "testeteste",
+    "confirmPassword": "testeteste"
+  },
+  "passwordDifferent": {
+    "name": "Ericton",
+    "email": "erictonbrito@yahoo.com.br",
+    "password": "tonejerry86",
+    "confirmPassword": "ericton86"
+  },
+  "passwordConfirmDifferent": {
+    "name": "Ericton",
+    "email": "erictonbrito@yahoo.com.br",
+    "password": "ericton86",
+    "confirmPassword": "86ericton"
+  }
+}
