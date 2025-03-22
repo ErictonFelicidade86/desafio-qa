@@ -28,10 +28,10 @@ jobs:
         run: npx prisma migrate dev
 
       - name: Iniciar servidor em segundo plano
-        run: yarn dev &
-
+        run: yarn dev -p 3010 &
+      
       - name: Aguardar servidor responder
-        run: npx wait-on http://localhost:3010
+        run: npx wait-on tcp:3010
 
       - name: Instalar dependências dos testes
         working-directory: ${{ matrix.project }}
