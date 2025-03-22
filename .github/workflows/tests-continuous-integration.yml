@@ -33,18 +33,13 @@ jobs:
 
       - name: Iniciar servidor em segundo plano
         run: yarn dev &
-        # Run in background
-        
-      - name: Instalar dependências do projeto E2E
-        working-directory: ${{ matrix.project }}
-        run: yarn install
 
-      - name: Verificar instalação do Cypress
-        working-directory: ${{ matrix.project }}
-        run: npx cypress --version
-      
+      - name: Aguardar o servidor na porta 3010
+        run: npx wait-on http://localhost:3010
+
       - name: Executar testes Cypress (headless)
         working-directory: ${{ matrix.project }}
         run: |
           echo "Rodando Cypress no projeto ${{ matrix.project }}"
           npx cypress run --browser chrome --headless
+
