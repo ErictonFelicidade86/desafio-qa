@@ -8,7 +8,8 @@ const user = CadastroUser;
 
 describe('Cadastro', () => {
   beforeEach(() => {
-    login.go();
+    cy.visit('/')
+    login.go()
     user.acessoCadastro()
   })
   it('Deve cadastrar um novo usuário', () => {

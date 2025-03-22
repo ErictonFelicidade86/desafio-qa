@@ -1,0 +1,42 @@
+name: Cypress Continuous Integration Tests
+
+on: 
+  pull_request:
+    branches:
+        - main
+        - develop
+
+jobs:
+  cypress-electron-tests:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        project: [web-tests]
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4.2.2
+
+      - name: Instalar dependências do projeto principal
+        run: yarn install
+
+      - name: Criar .env
+        run: cp .env.example .env
+
+      - name: Executar migrations Prisma
+        run: npx prisma migrate dev
+
+      - name: Iniciar servidor em segundo plano
+        run: yarn dev -p 3010 &
+      
+      - name: Aguardar servidor responder
+        run: npx wait-on tcp:3010
+
+      - name: Instalar dependências dos testes
+        working-directory: ${{ matrix.project }}
+        run: yarn install
+
+      - name: Rodar testes Cypress
+        working-directory: ${{ matrix.project }}
+        run: npx cypress run --browser chrome --headless
