@@ -8,7 +8,7 @@ const user = CadastroUser;
 
 describe('Cadastro', () => {
   beforeEach(() => {
-    login.go();
+    login.go()
     user.acessoCadastro()
   })
   it('Deve cadastrar um novo usuário', () => {
