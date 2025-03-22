@@ -3,8 +3,7 @@ import data from '../../../fixtures/dataUser.json'
 
 class login {
     go() {
-        // cy.visit('/')
-        // cy.acesso()
+        cy.acesso()
     }
     // Login Sucess
     sucesso() {
