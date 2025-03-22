@@ -3,29 +3,27 @@ import LoginPage from "../support/pages/LoginPage/LoginPage"
 const login = LoginPage;
 
 describe('Login', () => {
-  it('Deve logar com sucesso', () => {
+  beforeEach(() => {
     login.go()
+  })
+  it.only('Deve logar com sucesso', () => {
     login.sucesso()
   })
 
-  it('Deve encerrar a sessão com sucesso', () => {
-    login.go()
+  it.only('Deve encerrar a sessão com sucesso', () => {
     login.sucesso()
     login.logout()
   })
 
   it('Não deve logar com senha inválida', ()=> {
-    login.go()
     login.passwordInvalid()
   })
 
   it('Não deve logar com email inválida', ()=> {
-    login.go()
     login.emailInvalid()
   })
 
   it('tentar logar sem usar email e senha', ()=> {
-    login.go()
     login.emptyUser()
   })
 })

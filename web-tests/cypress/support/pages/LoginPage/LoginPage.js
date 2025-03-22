@@ -7,17 +7,12 @@ class login {
     }
     // Login Sucess
     sucesso() {
-        cy.get('#email').should('be.visible').type(data.userValid.email)
-        cy.get('#password').should('be.visible').type(data.userValid.password)
-        cy.contains('button', 'Entrar').should('be.visible').click()
-        cy.contains('div', 'Bem-vindo de volta, Ericton!').should('be.visible').and('have.text', 'Bem-vindo de volta, Ericton!')
-        cy.contains('div', 'Aqui está uma visão geral do seu painel.').should('be.visible').and('have.text', 'Aqui está uma visão geral do seu painel.')
+        cy.login(data.userValid.email, data.userValid.password)
+        cy.validateDashboard()
     }
     // Logout
     logout() {
-        cy.contains('span', 'E').should('be.visible').and('have.text', 'E').click()
-        cy.contains('span', 'Sair').should('be.visible').and('have.text', 'Sair').click()
-        cy.contains('div', 'Entrar').should('be.visible').and('have.text', 'Entrar')
+        cy.logout()
     }
     // Invalid Password
     passwordInvalid() {
