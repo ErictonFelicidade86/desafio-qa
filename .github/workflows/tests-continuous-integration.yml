@@ -1,18 +1,14 @@
 name: Cypress Continuous Integration Tests
 
-on:
+on: 
   pull_request:
     branches:
-      - main
-      - develop
+        - main
+        - develop
 
 jobs:
   cypress-electron-tests:
     runs-on: ubuntu-latest
-
-    container:
-      image: cypress/browsers:node-22.11.0-chrome-130.0.6723.116-1-ff-132.0.1-edge-130.0.2849.68-1
-      options: --user 1001
 
     strategy:
       matrix:
@@ -31,10 +27,16 @@ jobs:
       - name: Executar migrations Prisma
         run: npx prisma migrate dev
 
-      - name: Instalar dependências dos testes (web-tests)
+      - name: Iniciar servidor em segundo plano
+        run: yarn dev
+
+      - name: Aguardar servidor responder
+        run: npx wait-on http://localhost:3010
+
+      - name: Instalar dependências dos testes
         working-directory: ${{ matrix.project }}
         run: yarn install
 
-      - name: Executar testes E2E com start-server-and-test
+      - name: Rodar testes Cypress
         working-directory: ${{ matrix.project }}
-        run: yarn test:e2e
+        run: npx cypress run --browser chrome --headless
