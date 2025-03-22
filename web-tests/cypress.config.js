@@ -7,7 +7,7 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
-    screenshots: false,
+    screenshotsFolder: false,
     video: false
   },
 });
