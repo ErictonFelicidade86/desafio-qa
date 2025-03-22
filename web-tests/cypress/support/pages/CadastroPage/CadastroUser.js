@@ -10,7 +10,7 @@ class User {
 
     // Creating User Forms
     formUser() {
-        const urlBase = Cypress.config("baseUrl")
+        const urlBase = Cypress.config("baseUrlName")
         cy.request(urlBase).then(res => {
             const email = res.body.data[0].email
             const name = res.body.data[0].firstname
