@@ -5,7 +5,8 @@
   "main": "cypress.config.js",
   "scripts": {
     "test": "yarn cypress run",
-    "test:cy": "yarn cypress open"
+    "test:cy": "yarn cypress open",
+    "test:e2e": "start-server-and-test dev http://localhost:3010 cypress run --browser chrome --headless"
   },
   "keywords": ["Cypress", "WEB"],
   "author": "Ericton Brito",
