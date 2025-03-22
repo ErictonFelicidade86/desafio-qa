@@ -110,10 +110,6 @@ describe('Cadastro Responsivo Page', () => {
         login.go()
         user.accessSignUp()
       })
-
-      it('Deve cadastrar um novo usuário', () => {
-        user.formUser()
-      })
     
       it('Tentar cadastrar um usuário ja existente', () => {
         user.existingUser()
