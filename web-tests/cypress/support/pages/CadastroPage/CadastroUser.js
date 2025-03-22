@@ -15,10 +15,10 @@ class User {
             const email = res.body.data[0].email
             const name = res.body.data[0].firstname
 
-            cy.get('#name').should('be.visible').type(name)
-            cy.get('#email').should('be.visible').type(email)
-            // cy.get('#name').should('be.visible').type(data.userValid.name)
-            // cy.get('#email').should('be.visible').type(data.userValid.email)
+            // cy.get('#name').should('be.visible').type(name)
+            // cy.get('#email').should('be.visible').type(email)
+            cy.get('#name').should('be.visible').type(data.userValid.name)
+            cy.get('#email').should('be.visible').type(data.userValid.email)
             cy.get('#password').should('be.visible').type(data.userValid.password)
             cy.get('#confirmPassword').should('be.visible').type(data.userValid.confirmPassword)
             cy.contains('button', 'Cadastrar').should('be.visible').click()
