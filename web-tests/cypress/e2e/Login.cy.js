@@ -4,7 +4,8 @@ const login = LoginPage;
 
 describe('Login', () => {
   beforeEach(() => {
-    login.go()
+    cy.visit('/')
+    // login.go()
   })
   it('Deve logar com sucesso', () => {
     login.sucesso()

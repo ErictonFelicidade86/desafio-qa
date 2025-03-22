@@ -3,7 +3,6 @@
 
 Cypress.Commands.add('acesso', ()=> {
     cy.viewport(1600, 800)
-    cy.visit('/')
 })
 // Login
 Cypress.Commands.add('login', (email, password) => {

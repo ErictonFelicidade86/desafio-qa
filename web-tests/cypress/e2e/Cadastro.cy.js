@@ -8,6 +8,7 @@ const user = CadastroUser;
 
 describe('Cadastro', () => {
   beforeEach(() => {
+    cy.visit('/')
     login.go()
     user.acessoCadastro()
   })
