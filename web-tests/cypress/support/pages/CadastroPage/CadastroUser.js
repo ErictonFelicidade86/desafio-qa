@@ -3,7 +3,7 @@ import data from '../../../fixtures/dataUser.json'
 
 class User {
     // Page Register
-    acessoCadastro() {
+    accessSignUp() {
         cy.contains('a', 'Cadastre-se').should('be.visible').click()
         cy.contains('div', 'Cadastre-se').should('be.visible').and('have.text', 'Cadastre-se')
     }
