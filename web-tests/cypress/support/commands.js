@@ -1,8 +1,7 @@
 /// <reference types="cypress"/>
 // ***********************************************
 
-Cypress.Commands.add('acesso', ()=> {
-    // cy.viewport(1920, 1080)
+Cypress.Commands.add('access', ()=> {
     cy.visit('/')
 })
 // Login
