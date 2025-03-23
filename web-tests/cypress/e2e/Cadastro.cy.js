@@ -25,7 +25,6 @@ const viewports = [
 
 describe('Cadastro', () => {
   beforeEach(() => {
-    cy.visit('/')
     login.go()
     user.accessSignUp()
   })

@@ -12,6 +12,7 @@ Cypress.Commands.add('login', (email, password) => {
 })
 // Validate Dashboard
 Cypress.Commands.add('validateDashboard', () => {
+    cy.wait(1500)
     cy.contains('div', 'Bem-vindo de volta, Ericton!')
       .should('be.visible')
       .and('have.text', 'Bem-vindo de volta, Ericton!')
@@ -24,12 +25,14 @@ Cypress.Commands.add('logout', () => {
     cy.contains('span', 'E').should('be.visible').click()
     cy.contains('span', 'Sair').should('be.visible').click()
     cy.contains('div', 'Entrar').should('be.visible')
+
 })
 //Login With Credentials
 Cypress.Commands.add('loginWithCredentials', (email, password) => {
     cy.get('#email').should('be.visible').type(email)
     cy.get('#password').should('be.visible').type(password)
     cy.contains('button', 'Entrar').should('be.visible').click()
+    cy.wait(1500)
 })
 // Validate Invalid Credentials Message
 Cypress.Commands.add('validateInvalidCredentialsMessage', () => {

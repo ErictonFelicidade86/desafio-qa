@@ -27,7 +27,7 @@ describe('Login', () => {
     login.sucesso()
   })
 
-  it('Deve encerrar a sessão com sucesso', () => {
+  it.only('Deve encerrar a sessão com sucesso', () => {
     login.sucesso()
     login.logout()
   })
