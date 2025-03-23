@@ -2,17 +2,14 @@
 import data from '../../../fixtures/dataUser.json'
 
 class login {
-    go() {
-        cy.access()
-    }
     // Login Sucess
     sucesso() {
         cy.login(data.userValid.email, data.userValid.password)
-        cy.validateDashboard()
+        cy.validateDashboard('Bem-vindo de volta, Ericton!')
     }
     // Logout
     logout() {
-        cy.logout()
+        cy.logout('Entrar')
     }
     // Invalid Password
     passwordInvalid() {

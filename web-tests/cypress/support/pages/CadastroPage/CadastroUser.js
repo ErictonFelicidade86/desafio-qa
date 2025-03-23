@@ -10,20 +10,9 @@ class User {
 
     // Creating User Forms
     formUser() {
-        const urlBase = Cypress.config("baseUrlName")
-        cy.request(urlBase).then(res => {
-            const email = res.body.data[0].email
-            const name = res.body.data[0].firstname
-
-            // cy.get('#name').should('be.visible').type(name)
-            // cy.get('#email').should('be.visible').type(email)
-            cy.get('#name').should('be.visible').type(data.userValid.name)
-            cy.get('#email').should('be.visible').type(data.userValid.email)
-            cy.get('#password').should('be.visible').type(data.userValid.password)
-            cy.get('#confirmPassword').should('be.visible').type(data.userValid.confirmPassword)
-            cy.contains('button', 'Cadastrar').should('be.visible').click()
-            cy.contains('div', 'Faça login para continuar').should('be.visible').and('have.text', 'Faça login para continuar')
-        })
+        cy.fillSignupForm(data.userValid)
+        cy.submitSignup()
+        cy.validateRegisterMessage()        
     }
 
     // Existing User

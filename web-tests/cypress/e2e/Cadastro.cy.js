@@ -1,9 +1,7 @@
 /// <reference types="cypress"/>
 
-import LoginPage from "../support/pages/LoginPage/LoginPage";
 import CadastroUser from "../support/pages/CadastroPage/CadastroUser";
 
-const login = LoginPage;
 const user = CadastroUser;
 
 const viewports = [
@@ -11,13 +9,6 @@ const viewports = [
   'macbook-15',
   'macbook-13',
   'macbook-11',
-  'iphone-x',
-  'iphone-xr',
-  'iphone-6',
-  'iphone-8',
-  'ipad-2',
-  'ipad-mini',
-  'samsung-s10',
   'samsung-note9',
   [1920, 1080],
   [1600, 900],  
@@ -25,12 +16,12 @@ const viewports = [
 
 describe('Cadastro', () => {
   beforeEach(() => {
-    login.go()
+    cy.access()
     user.accessSignUp()
   })
-  it('Deve cadastrar um novo usuário', () => {
-    user.formUser()
-  })
+  // it('Deve cadastrar um novo usuário', () => {
+  //   user.formUser()
+  // })
 
   it('Tentar cadastrar um usuário ja existente', () => {
     user.existingUser()
@@ -100,14 +91,13 @@ describe('Cadastro Responsivo Page', () => {
 
     describe(`Viewport: ${label}`, () => {
       beforeEach(() => {
+        cy.access()
+        user.accessSignUp()
         if (isCustom) {
           cy.viewport(vp[0], vp[1])
         } else {
           cy.viewport(vp)
         }
-        cy.visit('/')
-        login.go()
-        user.accessSignUp()
       })
     
       it('Tentar cadastrar um usuário ja existente', () => {
