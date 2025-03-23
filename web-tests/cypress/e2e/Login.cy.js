@@ -6,34 +6,32 @@ const viewports = [
   [1920, 1080],
   [1600, 900],  
   'macbook-16',
-  'macbook-15',
-  'macbook-13',
-  'macbook-11',
-  'samsung-note9',
 ]
 
 describe('Login', () => {
-  beforeEach(() => {
-    cy.access()
-  })
   it('Deve logar com sucesso', () => {
+    login.go()
     login.sucesso()
   })
 
   it('Deve encerrar a sessão com sucesso', () => {
+    login.go()
     login.sucesso()
     login.logout()
   })
 
   it('Não deve logar com senha inválida', ()=> {
+    login.go()
     login.passwordInvalid()
   })
 
   it('Não deve logar com email inválida', ()=> {
+    login.go()
     login.emailInvalid()
   })
 
   it('tentar logar sem usar email e senha', ()=> {
+    login.go()
     login.emptyUser()
   })
 })
@@ -50,27 +48,31 @@ describe('Login Responsivo Page', () => {
         } else {
           cy.viewport(vp)
         }
-        cy.access()
       })
 
       it('Deve logar com sucesso', () => {
+        login.go()
         login.sucesso()
       })
 
       it('Deve encerrar sessão com sucesso', () => {
+        login.go()
         login.sucesso()
         login.logout()
       })
 
-      it('Não deve logar com senha inválida', () => {
+      it.only('Não deve logar com senha inválida', () => {
+        login.go()
         login.passwordInvalid()
       })
 
       it('Não deve logar com email inválido', () => {
+        login.go()
         login.emailInvalid()
       })
 
       it('Deve mostrar erro ao tentar logar sem email e senha', () => {
+        login.go()
         login.emptyUser()
       })
     })

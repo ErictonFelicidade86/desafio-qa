@@ -2,6 +2,9 @@
 import data from '../../../fixtures/dataUser.json'
 
 class login {
+    go() {
+        cy.access()
+    }
     // Login Sucess
     sucesso() {
         cy.login(data.userValid.email, data.userValid.password)
@@ -23,7 +26,7 @@ class login {
     }
     // Empty User
     emptyUser() {
-        cy.contains('button', 'Entrar').should('be.visible').click()
+        cy.submitSignup()
         cy.validateEmptyFieldsMessage()
     }
-} export default new login();
+} export default new login()

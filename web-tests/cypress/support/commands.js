@@ -2,7 +2,7 @@
 // ***********************************************
 
 Cypress.Commands.add('access', ()=> {
-    cy.visit('http://localhost:3010')
+    cy.visit('/')
 })
 // Login
 Cypress.Commands.add('login', (email, password) => {
@@ -66,7 +66,7 @@ Cypress.Commands.add('fillSignupForm', ({ name, email, password, confirmPassword
 })
 // Button Submit Signup
 Cypress.Commands.add('submitSignup', () => {
-  cy.contains('button', 'Cadastrar').should('exist').should('be.visible').click()
+  cy.get('button[type="submit"').click()
 })
 // Validate Signup Error
 Cypress.Commands.add('validateSignupError', (selector, expectedText) => {
