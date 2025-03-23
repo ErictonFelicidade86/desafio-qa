@@ -19,9 +19,9 @@ describe('Cadastro', () => {
     cy.access()
     user.accessSignUp()
   })
-  // it('Deve cadastrar um novo usuário', () => {
-  //   user.formUser()
-  // })
+  it('Deve cadastrar um novo usuário', () => {
+    user.formUser()
+  })
 
   it('Tentar cadastrar um usuário ja existente', () => {
     user.existingUser()
@@ -91,13 +91,17 @@ describe('Cadastro Responsivo Page', () => {
 
     describe(`Viewport: ${label}`, () => {
       beforeEach(() => {
-        cy.access()
-        user.accessSignUp()
         if (isCustom) {
           cy.viewport(vp[0], vp[1])
         } else {
           cy.viewport(vp)
         }
+        cy.access()
+        user.accessSignUp()
+      })
+
+      it('Deve cadastrar um novo usuário', () => {
+        user.formUser()
       })
     
       it('Tentar cadastrar um usuário ja existente', () => {

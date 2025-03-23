@@ -4,8 +4,8 @@ import data from '../../../fixtures/dataUser.json'
 class User {
     // Page Register
     accessSignUp() {
-        cy.contains('a', 'Cadastre-se').should('be.visible').click()
-        cy.contains('div', 'Cadastre-se').should('be.visible').and('have.text', 'Cadastre-se')
+        cy.contains('a', 'Cadastre-se').should('exist').should('be.visible').click()
+        cy.contains('div', 'Cadastre-se').should('exist').should('be.visible').and('have.text', 'Cadastre-se')
     }
 
     // Creating User Forms
@@ -121,5 +121,4 @@ class User {
         cy.submitSignup()
         cy.validateSignupError('#«Rhhtml7»-form-item-message', 'As senhas não coincidem')
     }
-
 } export default new User()

@@ -20,7 +20,7 @@ Cypress.Commands.add('validateDashboard', (text) => {
 Cypress.Commands.add('logout', (text) => {
     cy.contains('span', 'E').should('exist').should('be.visible').click()
     cy.contains('span', 'Sair').should('exist').should('be.visible').click()
-    cy.contains('div', text).should('exist')
+    cy.contains('div', text).should('exist').should('be.visible')
 
 })
 //Login With Credentials

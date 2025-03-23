@@ -20,7 +20,7 @@ describe('Login', () => {
     login.sucesso()
   })
 
-  it.only('Deve encerrar a sessão com sucesso', () => {
+  it('Deve encerrar a sessão com sucesso', () => {
     login.sucesso()
     login.logout()
   })
@@ -45,12 +45,12 @@ describe('Login Responsivo Page', () => {
 
     describe(`Viewport: ${label}`, () => {
       beforeEach(() => {
-        cy.access()
         if (isCustom) {
           cy.viewport(vp[0], vp[1])
         } else {
           cy.viewport(vp)
         }
+        cy.access()
       })
 
       it('Deve logar com sucesso', () => {
