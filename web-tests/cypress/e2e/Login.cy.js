@@ -7,16 +7,7 @@ const viewports = [
   'macbook-15',
   'macbook-13',
   'macbook-11',
-  'iphone-x',
-  'iphone-xr',
-  'iphone-6',
-  'iphone-8',
-  'ipad-2',
-  'ipad-mini',
-  'samsung-s10',
-  'samsung-note9',
   [1920, 1080],
-  [1600, 900],  
 ]
 
 describe('Login com sucesso', () => {

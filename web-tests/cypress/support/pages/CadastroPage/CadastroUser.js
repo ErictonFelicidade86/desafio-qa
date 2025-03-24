@@ -4,7 +4,7 @@ import data from '../../../fixtures/dataUser.json'
 class User {
     // Page Register
     accessSignUp() {
-        cy.createAccount('a', 'Cadastre-se')
+        cy.createAccount('a', 'Cadastre-se').should('exist').should('be.visible').click({ force: true })
     }
 
     // Creating User Forms

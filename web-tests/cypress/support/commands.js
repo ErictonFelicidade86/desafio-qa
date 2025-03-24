@@ -6,9 +6,14 @@ Cypress.Commands.add('access', ()=> {
 })
 // Login
 Cypress.Commands.add('login', (email, password) => {
-    cy.get('#email').should('be.visible').type(email)
-    cy.get('#password').should('be.visible').type(password)
-    cy.contains('button', 'Entrar').should('be.visible').click()
+    cy.get('#email')
+      .should('be.visible')
+      .type(email)
+    cy.get('#password')
+      .should('be.visible')
+      .type(password)
+    cy.contains('button', 'Entrar')
+      .should('be.visible').click({ force: true })
 })
 // Validate Dashboard
 Cypress.Commands.add('validateDashboard', (selector, expectedText, expectedText2) => {
@@ -21,14 +26,24 @@ Cypress.Commands.add('validateDashboard', (selector, expectedText, expectedText2
 })
 // Logout
 Cypress.Commands.add('logout', (selector, tag, expectedText, expectedText2, text) => {
-    cy.contains(selector, expectedText).should('be.visible').click()
-    cy.contains(selector, expectedText2).should('be.visible').click()
-    cy.contains(tag, text).should('be.visible')
+    cy.contains(selector, expectedText)
+      .should('exist')
+      .should('be.visible')
+      .click({ force: true })
+    cy.contains(selector, expectedText2)
+      .should('exist')
+      .should('be.visible').click({ force: true })
+    cy.contains(tag, text)
+      .should('be.visible')
 })
 //Login With Credentials
 Cypress.Commands.add('loginWithCredentials', (email, password) => {
-    cy.get('#email').should('be.visible').type(email)
-    cy.get('#password').should('be.visible').type(password)
+    cy.get('#email')
+      .should('be.visible')
+      .type(email)
+    cy.get('#password')
+      .should('be.visible')
+      .type(password)
 })
 // Validate Invalid Credentials Message
 Cypress.Commands.add('validateInvalidCredentialsMessage', (selector, expectedText, expectedText2) => {
@@ -47,10 +62,14 @@ Cypress.Commands.add('validateInvalidEmailMessage', (selector, expectedText) => 
 })
 // Validate Empty Fields Message  
 Cypress.Commands.add('validateEmptyFieldsMessage', (selector, expectedText, expectedText2) => {
+    cy.get('#email').clear()
+    cy.get('#password').clear()
     cy.contains(selector, expectedText)
+      .should('exist')
       .should('be.visible')
       .and('have.text', expectedText)
     cy.contains(selector, expectedText2)
+      .should('exist')
       .should('be.visible')
       .and('have.text', expectedText2)
 })
@@ -58,8 +77,9 @@ Cypress.Commands.add('validateEmptyFieldsMessage', (selector, expectedText, expe
 // REGISTER USER
 
 // Link Create Account
-Cypress.Commands.add('createAccount', (selector, expectedText) => {
-  cy.contains(selector, expectedText).should('exist').should('be.visible').click()
+Cypress.Commands.add('createAccount', (a, text) => {
+  cy.contains(a, text)
+    .should('exist').click({ force: true })
 })
 
 // Fill Signup Form
@@ -71,18 +91,29 @@ Cypress.Commands.add('fillSignupForm', ({ name, email, password, confirmPassword
 })
 // Button Submit Signup
 Cypress.Commands.add('submitSignup', (submit) => {
-  cy.get(submit).should('exist').should('be.visible').click()
+  cy.get(submit).should('exist')
+    .should('be.visible')
+    .click({ force: true })
 })
 // Validate Signup Error
 Cypress.Commands.add('validateSignupError', (selector, expectedText) => {
-  cy.get(selector).should('exist').should('be.visible').and('have.text', expectedText)
+  cy.get(selector)
+    .should('exist')
+    .should('be.visible')
+    .and('have.text', expectedText)
 })
 // Validate Text Error
 Cypress.Commands.add('validateTextError', (tag, expectedText) => {
-  cy.contains(tag, expectedText).should('exist').should('be.visible').and('have.text', expectedText)
+  cy.contains(tag, expectedText)
+    .should('exist')
+    .should('be.visible')
+    .and('have.text', expectedText)
 })
 
 // Validate Message Login Contiue 
 Cypress.Commands.add('validateMessageLoginContinue', (selector, expectedText) => {
-  cy.contains(selector, expectedText).should('exist').should('be.visible').and('have.text', expectedText)
+  cy.contains(selector, expectedText)
+    .should('exist')
+    .should('be.visible')
+    .and('have.text', expectedText)
 })

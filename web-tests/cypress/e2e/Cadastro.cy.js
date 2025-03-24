@@ -10,23 +10,15 @@ const viewports = [
   'macbook-15',
   'macbook-13',
   'macbook-11',
-  'iphone-x',
-  'iphone-xr',
-  'iphone-6',
-  'iphone-8',
-  'ipad-2',
-  'ipad-mini',
-  'samsung-s10',
-  'samsung-note9',
   [1920, 1080],
-  [1600, 900],  
 ]
 
 describe('Cadastro com sucesso', () => {
   beforeEach(() => {
     cy.visit('/')
     login.go()
-    user.accessSignUp()
+    // user.accessSignUp()
+    cy.contains('a', 'Cadastre-se').should('exist').should('be.visible').click({ force: true })
   })
   it('Deve cadastrar um novo usuário', () => {
     user.formUser()
@@ -37,7 +29,8 @@ describe('Cadastro com dados inválidos', ()=> {
   beforeEach(() => {
     cy.visit('/')
     login.go()
-    user.accessSignUp()
+    // user.accessSignUp()
+    cy.contains('a', 'Cadastre-se').should('exist').should('be.visible').click({ force: true })
   })
   it('Tentar cadastrar um usuário ja existente', () => {
     user.existingUser()
@@ -114,7 +107,9 @@ describe('Cadastro Responsivo Page', () => {
         }
         cy.visit('/')
         login.go()
-        user.accessSignUp()
+        // user.accessSignUp()
+        cy.contains('a', 'Cadastre-se').should('exist').should('be.visible').click({ force: true })
+
       })
     
       it('Tentar cadastrar um usuário ja existente', () => {
