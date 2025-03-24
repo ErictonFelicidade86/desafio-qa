@@ -5,7 +5,6 @@ import CadastroUser from "../support/pages/CadastroPage/CadastroUser";
 
 const login = LoginPage;
 const user = CadastroUser;
-
 const viewports = [
   'macbook-16',
   'macbook-15',
@@ -23,7 +22,7 @@ const viewports = [
   [1600, 900],  
 ]
 
-describe('Cadastro', () => {
+describe('Cadastro com sucesso', () => {
   beforeEach(() => {
     cy.visit('/')
     login.go()
@@ -32,7 +31,14 @@ describe('Cadastro', () => {
   it('Deve cadastrar um novo usuário', () => {
     user.formUser()
   })
+})
 
+describe('Cadastro com dados inválidos', ()=> {
+  beforeEach(() => {
+    cy.visit('/')
+    login.go()
+    user.accessSignUp()
+  })
   it('Tentar cadastrar um usuário ja existente', () => {
     user.existingUser()
   })
