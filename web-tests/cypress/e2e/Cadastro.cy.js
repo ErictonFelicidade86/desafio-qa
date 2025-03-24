@@ -3,8 +3,8 @@
 import LoginPage from "../support/pages/LoginPage/LoginPage";
 import CadastroUser from "../support/pages/CadastroPage/CadastroUser";
 
-const login = LoginPage;
-const user = CadastroUser;
+const login = LoginPage
+const user = CadastroUser
 const viewports = [
   'macbook-16',
   'macbook-15',

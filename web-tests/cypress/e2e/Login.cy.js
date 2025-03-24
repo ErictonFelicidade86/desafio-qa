@@ -1,6 +1,6 @@
 import LoginPage from "../support/pages/LoginPage/LoginPage"
 
-const login = LoginPage;
+const login = LoginPage
 
 const viewports = [
   'macbook-16',
@@ -19,7 +19,7 @@ const viewports = [
   [1600, 900],  
 ]
 
-describe('Login', () => {
+describe('Login com sucesso', () => {
   beforeEach(() => {
     login.go()
   })
@@ -31,7 +31,12 @@ describe('Login', () => {
     login.sucesso()
     login.logout()
   })
+})
 
+describe('Login com dados inválidos', () => {
+  beforeEach(() => {
+    login.go()
+  })
   it('Não deve logar com senha inválida', ()=> {
     login.passwordInvalid()
   })

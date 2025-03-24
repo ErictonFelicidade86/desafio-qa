@@ -11,49 +11,48 @@ Cypress.Commands.add('login', (email, password) => {
     cy.contains('button', 'Entrar').should('be.visible').click()
 })
 // Validate Dashboard
-Cypress.Commands.add('validateDashboard', () => {
-    cy.contains('div', 'Bem-vindo de volta, Ericton!')
+Cypress.Commands.add('validateDashboard', (selector, expectedText, expectedText2) => {
+    cy.contains(selector, expectedText)
       .should('be.visible')
-      .and('have.text', 'Bem-vindo de volta, Ericton!')
-    cy.contains('div', 'Aqui está uma visão geral do seu painel.')
+      .and('have.text', expectedText)
+    cy.contains(selector, expectedText2)
       .should('be.visible')
-      .and('have.text', 'Aqui está uma visão geral do seu painel.')
+      .and('have.text', expectedText2)
 })
 // Logout
-Cypress.Commands.add('logout', () => {
-    cy.contains('span', 'E').should('be.visible').click()
-    cy.contains('span', 'Sair').should('be.visible').click()
-    cy.contains('div', 'Entrar').should('be.visible')
+Cypress.Commands.add('logout', (selector, tag, expectedText, expectedText2, text) => {
+    cy.contains(selector, expectedText).should('be.visible').click()
+    cy.contains(selector, expectedText2).should('be.visible').click()
+    cy.contains(tag, text).should('be.visible')
 })
 //Login With Credentials
 Cypress.Commands.add('loginWithCredentials', (email, password) => {
     cy.get('#email').should('be.visible').type(email)
     cy.get('#password').should('be.visible').type(password)
-    cy.contains('button', 'Entrar').should('be.visible').click()
 })
 // Validate Invalid Credentials Message
-Cypress.Commands.add('validateInvalidCredentialsMessage', () => {
-    cy.contains('div', 'Credenciais inválidas')
+Cypress.Commands.add('validateInvalidCredentialsMessage', (selector, expectedText, expectedText2) => {
+    cy.contains(selector, expectedText)
       .should('be.visible')
-      .and('have.text', 'Credenciais inválidas')
-    cy.contains('div', 'Tente novamente')
+      .and('have.text', expectedText)
+    cy.contains(selector, expectedText2)
       .should('be.visible')
-      .and('have.text', 'Tente novamente')
+      .and('have.text', expectedText2)
 })
 // Validate Invalid Email Message
-Cypress.Commands.add('validateInvalidEmailMessage', () => {
-    cy.contains('p', 'Email inválido')
+Cypress.Commands.add('validateInvalidEmailMessage', (selector, expectedText) => {
+    cy.contains(selector, expectedText)
       .should('be.visible')
-      .and('have.text', 'Email inválido')
+      .and('have.text', expectedText)
 })
 // Validate Empty Fields Message  
-Cypress.Commands.add('validateEmptyFieldsMessage', () => {
-    cy.contains('p', 'Email é obrigatório')
+Cypress.Commands.add('validateEmptyFieldsMessage', (selector, expectedText, expectedText2) => {
+    cy.contains(selector, expectedText)
       .should('be.visible')
-      .and('have.text', 'Email é obrigatório')
-    cy.contains('p', 'Senha é obrigatória')
+      .and('have.text', expectedText)
+    cy.contains(selector, expectedText2)
       .should('be.visible')
-      .and('have.text', 'Senha é obrigatória')
+      .and('have.text', expectedText2)
 })
 
 // REGISTER USER
