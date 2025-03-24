@@ -12,7 +12,6 @@ class User {
         cy.fillSignupForm(data.userValid)
         cy.submitSignup('button[type="submit"]')
         cy.validateMessageLoginContinue('div', 'Faça login para continuar')
-
     }
 
     // Existing User
