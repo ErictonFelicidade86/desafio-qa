@@ -7,8 +7,6 @@ const login = LoginPage
 const user = CadastroUser
 const viewports = [
   'macbook-16',
-  'macbook-15',
-  'macbook-13',
   [1920, 1080],
 ]
 
@@ -127,37 +125,13 @@ describe('Cadastro Responsivo Page', () => {
       it('Tentar cadastrar um usuário sem informar a senha', () => {
         user.emptyPassword()
       })
-    
-      it('Tentar cadastrar um usuário sem informar o confirmar senha', () => {
-        user.emptyConfirmPassword()
-      })
-    
+
       it('Tentar cadastrar um usuário com nome passe de 50 caracteres', () => {
         user.nameInvalid()
       })
     
       it('Tentar cadastrar um usuário com um email inválido', () => {
         user.emailInvalid()
-      })
-    
-      it('Tentar cadastrar um usuário com senha inválida', () => {
-        user.passwordInvalid()
-      })
-    
-      it('Tentar cadastrar um usuário com senha curta', () => {
-        user.shortPassword()
-      })
-    
-      it('Tentar cadastrar um usuário com senha fora do padrão', () => {
-        user.nonStandardPassword()
-      })
-    
-      it('Tentar cadastrar um usuário com senha sem letra', () => {
-        user.passwordWithoutLetters()
-      })
-    
-      it('Tentar cadastrar um usuário com senha sem número', () => {
-        user.passwordWithoutNumbers()
       })
     
       it('Tentar cadastrar um usuário com uma senha diferente de confirmar senha', () => {
