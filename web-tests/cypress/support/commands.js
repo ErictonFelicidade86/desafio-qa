@@ -28,8 +28,7 @@ Cypress.Commands.add('validateDashboard', (selector, expectedText, expectedText2
 Cypress.Commands.add('logout', (selector, tag, expectedText, expectedText2, text) => {
     cy.contains(selector, expectedText)
       .should('exist')
-      .should('be.visible')
-      .click({ force: true })
+      .should('be.visible').click({ force: true })
     cy.contains(selector, expectedText2)
       .should('exist')
       .should('be.visible').click({ force: true })
@@ -81,7 +80,6 @@ Cypress.Commands.add('createAccount', (a, text) => {
   cy.contains(a, text)
     .should('exist').click({ force: true })
 })
-
 // Fill Signup Form
 Cypress.Commands.add('fillSignupForm', ({ name, email, password, confirmPassword }) => {
   if (name) cy.get('#name').should('exist').should('be.visible').type(name)
@@ -109,7 +107,6 @@ Cypress.Commands.add('validateTextError', (tag, expectedText) => {
     .should('be.visible')
     .and('have.text', expectedText)
 })
-
 // Validate Message Login Contiue 
 Cypress.Commands.add('validateMessageLoginContinue', (selector, expectedText) => {
   cy.contains(selector, expectedText)

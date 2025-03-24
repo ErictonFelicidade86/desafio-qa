@@ -16,12 +16,20 @@
 
 1. Instalar as dependências
 ```
+yarn install
+```
+ou
+```
 npm install ou yarn install
 ```
 
 3. Subir o Cypress UI
 ```
-npx cypress open ou yarn cypress open
+yarn cypress open
+```
+ou
+```
+npx cypress open
 ```
 
 4. Executar testes em Headless

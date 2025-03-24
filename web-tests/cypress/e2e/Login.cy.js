@@ -6,7 +6,6 @@ const viewports = [
   'macbook-16',
   'macbook-15',
   'macbook-13',
-  'macbook-11',
   [1920, 1080],
 ]
 
