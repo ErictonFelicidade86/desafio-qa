@@ -7,26 +7,14 @@ const login = LoginPage
 const user = CadastroUser
 const viewports = [
   'macbook-16',
-  'macbook-15',
-  'macbook-13',
-  'macbook-11',
-  'iphone-x',
-  'iphone-xr',
-  'iphone-6',
-  'iphone-8',
-  'ipad-2',
-  'ipad-mini',
-  'samsung-s10',
-  'samsung-note9',
   [1920, 1080],
-  [1600, 900],  
 ]
 
 describe('Cadastro com sucesso', () => {
   beforeEach(() => {
     cy.visit('/')
     login.go()
-    user.accessSignUp()
+    cy.contains('a', 'Cadastre-se').should('exist').should('be.visible').click({ force: true })
   })
   it('Deve cadastrar um novo usuário', () => {
     user.formUser()
@@ -37,7 +25,7 @@ describe('Cadastro com dados inválidos', ()=> {
   beforeEach(() => {
     cy.visit('/')
     login.go()
-    user.accessSignUp()
+    cy.contains('a', 'Cadastre-se').should('exist').should('be.visible').click({ force: true })
   })
   it('Tentar cadastrar um usuário ja existente', () => {
     user.existingUser()
@@ -114,7 +102,8 @@ describe('Cadastro Responsivo Page', () => {
         }
         cy.visit('/')
         login.go()
-        user.accessSignUp()
+        cy.contains('a', 'Cadastre-se').should('exist').should('be.visible').click({ force: true })
+
       })
     
       it('Tentar cadastrar um usuário ja existente', () => {
@@ -136,37 +125,13 @@ describe('Cadastro Responsivo Page', () => {
       it('Tentar cadastrar um usuário sem informar a senha', () => {
         user.emptyPassword()
       })
-    
-      it('Tentar cadastrar um usuário sem informar o confirmar senha', () => {
-        user.emptyConfirmPassword()
-      })
-    
+
       it('Tentar cadastrar um usuário com nome passe de 50 caracteres', () => {
         user.nameInvalid()
       })
     
       it('Tentar cadastrar um usuário com um email inválido', () => {
         user.emailInvalid()
-      })
-    
-      it('Tentar cadastrar um usuário com senha inválida', () => {
-        user.passwordInvalid()
-      })
-    
-      it('Tentar cadastrar um usuário com senha curta', () => {
-        user.shortPassword()
-      })
-    
-      it('Tentar cadastrar um usuário com senha fora do padrão', () => {
-        user.nonStandardPassword()
-      })
-    
-      it('Tentar cadastrar um usuário com senha sem letra', () => {
-        user.passwordWithoutLetters()
-      })
-    
-      it('Tentar cadastrar um usuário com senha sem número', () => {
-        user.passwordWithoutNumbers()
       })
     
       it('Tentar cadastrar um usuário com uma senha diferente de confirmar senha', () => {

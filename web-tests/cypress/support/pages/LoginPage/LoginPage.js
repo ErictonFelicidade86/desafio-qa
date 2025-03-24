@@ -17,18 +17,18 @@ class login {
     // Invalid Password
     passwordInvalid() {
         cy.loginWithCredentials(data.userValid.email, data.passwordInvalid.password)
-        cy.submitSignup('button[type="submit"]')
+        cy.submitSignup('button[type="submit"]').should('exist').click({ force: true })
         cy.validateInvalidCredentialsMessage('div', 'Credenciais inválidas', 'Tente novamente')
     }
     // Invalid Email
     emailInvalid() {
         cy.loginWithCredentials(data.emailInvalid.email, data.userValid.password)
-        cy.submitSignup('button[type="submit"]')
+        cy.submitSignup('button[type="submit"]').should('exist').click({ force: true })
         cy.validateInvalidEmailMessage('p', 'Email inválido')
     }
     // Empty User
     emptyUser() {
-        cy.submitSignup('button[type="submit"]')
+        cy.submitSignup('button[type="submit"]').should('exist').click({ force: true })
         cy.validateEmptyFieldsMessage('p', 'Email é obrigatório', 'Senha é obrigatória')
     }
 

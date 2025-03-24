@@ -16,17 +16,47 @@
 
 1. Instalar as dependências
 ```
-npm install ou yarn install
+yarn install
+```
+ou
+```
+npm install
 ```
 
 3. Subir o Cypress UI
 ```
-npx cypress open ou yarn cypress open
+yarn cypress open
+```
+ou
+```
+npx cypress open
 ```
 
 4. Executar testes em Headless
 ```
-npx cypress run ou yarn cypress run
+yarn cypress run
+```
+ou
+```
+npx cypress run
+```
+
+5. Executar Allure Result
+```
+yarn allure
+```
+ou
+```
+npm run alure
+```
+
+5. Executar Allure Report
+```
+yarn allure:gene
+```
+ou
+```
+npm run alure:gene
 ```
 
 <hr>

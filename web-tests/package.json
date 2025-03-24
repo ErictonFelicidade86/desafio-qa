@@ -5,12 +5,19 @@
   "main": "cypress.config.js",
   "scripts": {
     "test": "yarn cypress run",
-    "test:cy": "yarn cypress open"
+    "test:cy": "yarn cypress open",
+    "allure": "allure serve",
+    "allure:gene": "allure generate"
   },
-  "keywords": ["Cypress", "WEB"],
+  "keywords": [
+    "Cypress",
+    "WEB"
+  ],
   "author": "Ericton Brito",
   "license": "MIT",
   "dependencies": {
+    "allure-commandline": "^2.33.0",
+    "allure-cypress": "^3.2.0",
     "cypress": "^14.2.0"
   }
 }
