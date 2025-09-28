@@ -1,4 +1,4 @@
-# Desafio Técnico – QA Pleno
+# Automação com Cypress usando POM
 
 ## 📌 Descrição
 
